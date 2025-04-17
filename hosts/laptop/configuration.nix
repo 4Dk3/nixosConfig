@@ -217,6 +217,7 @@ environment.systemPackages = with pkgs; [
     vulkan-validation-layers
     wineWowPackages.staging
     pamixer
+    inter
     htop
     jdk
     obs-studio
