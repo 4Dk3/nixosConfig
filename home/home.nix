@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     pavucontrol
     vscode
+    android-studio
     jetbrains.idea-community-bin
     heroic
     rofi
@@ -40,6 +41,7 @@
     "com.spotify.Client"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
+    "org.gnome.Boxes"
   ];
 
   home.file = {

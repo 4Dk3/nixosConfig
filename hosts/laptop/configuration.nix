@@ -37,9 +37,9 @@
     };
 
     #LQX
-    kernelPackages = pkgs.linuxPackages_lqx;
+    #kernelPackages = pkgs.linuxPackages_lqx;
     #Default Kernel
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking = {
@@ -72,7 +72,7 @@
     isNormalUser = true;
     description = "powr4e";
     shell = pkgs.fish;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "vboxusers"];
   };
 
   # Allow unfree packages
@@ -194,6 +194,13 @@ evdev:atkbd:dmi:*
   # Disable pulse hardware
   services.pulseaudio.enable = false;
 
+  # Virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  #virtualisation.virtualbox.guest.enable = true;
+  users.extraGroups.vboxusers.members = [ "powr4e" ];
+  virtualisation.virtualbox.host.enableKvm = false;
+
 
 ############################
 ####### PACKAGES ###########
@@ -206,6 +213,7 @@ environment.systemPackages = with pkgs; [
     neovim
     wget
     git
+    tmux
     neofetch
     fastfetch
     alacritty
@@ -220,6 +228,7 @@ environment.systemPackages = with pkgs; [
     inter
     htop
     jdk
+    netbeans
     obs-studio
     spicetify-cli
     xdg-utils

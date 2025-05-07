@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{pkgs, ... }:
 
 {
   
   home.packages = with pkgs.gnomeExtensions; [
     blur-my-shell
+    caffeine
   ];
   
   gtk = {
@@ -36,6 +37,7 @@
     settings = {
     "org/gnome/shell" = {
       favorite-apps = [
+      	"com.spotify.Client.desktop"
         "firefox.desktop"
         "code.desktop"
         "foot.desktop"
@@ -43,6 +45,7 @@
       ];
       enabled-extensions = with pkgs.gnomeExtensions; [
           blur-my-shell.extensionUuid
+	  caffeine.extensionUuid
       ];
     };
 
